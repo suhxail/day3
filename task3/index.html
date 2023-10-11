@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day3</title>
+</head>
+
+<body>
+    <script>
+        function handleData() {
+            let data = JSON.parse(this.responseText)
+            console.log(data)
+
+            for (i = 0; i <= data.length; i++) {
+               
+                if (data[i] && data[i].name) {
+                    console.log("name:", data[i].name);
+                }
+
+                if (data[i] && data[i].region) {
+                    console.log("region:", data[i].region);
+                }
+
+                if (data[i] && data[i].subregion) {
+                    console.log("subregion:", data[i].subregion);
+                }
+
+                if (data[i] && data[i].population) {
+                    console.log("population:", data[i].population);
+                }
+            }
+        }
+
+        const req = new XMLHttpRequest();
+        req.addEventListener('load', handleData);
+        req.open('GET', 'https://restcountries.com/v3.1/all');
+        req.send()
+    </script>
+</body>
+
+</html>
